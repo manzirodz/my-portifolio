@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rodrigue - Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* CSS Variables */
+      :root {
+        --primary: #2d5bff;
+        --secondary: #ff6b6b;
+        --dark: #2d3748;
+        --light: #f7fafc;
+        --gray: #a0aec0;
+        --transition: all 0.3s ease;
+      }
+
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--primary);
+        transition: var(--transition);
+      }
+
+      a:hover {
+        color: var(--secondary);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 28px;
+        background: var(--primary);
+        color: white;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background: var(--secondary);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 2.5rem;
+        color: var(--dark);
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--primary);
+      }
+
+      /* Header Styles */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        color: var(--dark);
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        padding-top: 150px;
+        padding-bottom: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .hero-content {
+        flex: 1;
+        min-width: 300px;
+        padding-right: 30px;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        color: var(--dark);
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        color: var(--gray);
+      }
+
+      .hero-image {
+        flex: 1;
+        min-width: 300px;
+        text-align: center;
+        position: relative;
+      }
+
+      .image-placeholder {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border-radius: 50%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .image-placeholder i {
+        font-size: 5rem;
+      }
+
+      /* About Section */
+      .about-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .about-text {
+        flex: 1;
+        min-width: 300px;
+        padding-right: 40px;
+      }
+
+      .about-text h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .about-text p {
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+      }
+
+      .about-skills {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .skill {
+        margin-bottom: 20px;
+      }
+
+      .skill-name {
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .skill-bar {
+        height: 10px;
+        background: #e2e8f0;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .skill-level {
+        height: 100%;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        border-radius: 10px;
+      }
+
+      /* Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .skill-card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+      }
+
+      .skill-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .skill-card i {
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 20px;
+      }
+
+      .skill-card h3 {
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+
+      /* Contact Section */
+      .contact-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .contact-info {
+        flex: 1;
+        min-width: 300px;
+        padding-right: 40px;
+      }
+
+      .contact-info h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      .contact-info p {
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+      }
+
+      .contact-form {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+
+      .form-group textarea {
+        min-height: 150px;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark);
+        color: white;
+        padding: 40px 0;
+        text-align: center;
+      }
+
+      .social-links {
+        margin-bottom: 20px;
+      }
+
+      .social-links a {
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 15px;
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        color: var(--secondary);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          position: fixed;
+          top: 70px;
+          right: -100%;
+          background: white;
+          width: 80%;
+          height: calc(100vh - 70px);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          transition: var(--transition);
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links.active {
+          right: 0;
+        }
+
+        .nav-links li {
+          margin: 20px 0;
+        }
+
+        .hamburger {
+          display: block;
+        }
+
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">Rodrigue</div>
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <div class="hamburger">
+            <i class="fas fa-bars"></i>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Hi, I'm <span style="color: var(--primary)">Rodrigue</span></h1>
+          <p>
+            A passionate developer with expertise in Java, HTML & CSS, problem
+            solving, GitHub, C, and computer networking. I love creating
+            efficient and elegant solutions to complex problems.
+          </p>
+          <a href="#contact" class="btn">Get In Touch</a>
+        </div>
+        <div class="hero-image">
+          <div class="image-placeholder">
+            <img src="pass.jpg" style="object-fit: fill" />
+          </div>
+          <!-- <img style="margin-top: 20px; font-style: italic" src="pass.jpg">
+            Your photo will appear here
+          </img> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <h2>I design and develop innovative solutions</h2>
+            <p>
+              Hello! I'm Rodrigue, a developer with a passion for creating
+              efficient and user-friendly applications. I enjoy turning complex
+              problems into simple, beautiful solutions.
+            </p>
+            <p>
+              With expertise in multiple programming languages and technologies,
+              I'm always looking for new challenges and opportunities to grow as
+              a developer.
+            </p>
+            <p>
+              When I'm not coding, you can find me exploring new technologies,
+              contributing to open source projects, or expanding my knowledge in
+              computer networking.
+            </p>
+          </div>
+          <div class="about-skills">
+            <div class="skill">
+              <div class="skill-name">
+                <span>Java</span>
+                <span>90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="skill">
+              <div class="skill-name">
+                <span>HTML & CSS</span>
+                <span>95%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 95%"></div>
+              </div>
+            </div>
+            <div class="skill">
+              <div class="skill-name">
+                <span>Problem Solving</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 85%"></div>
+              </div>
+            </div>
+            <div class="skill">
+              <div class="skill-name">
+                <span>GitHub</span>
+                <span>80%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 80%"></div>
+              </div>
+            </div>
+            <div class="skill">
+              <div class="skill-name">
+                <span>C Programming</span>
+                <span>75%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 75%"></div>
+              </div>
+            </div>
+            <div class="skill">
+              <div class="skill-name">
+                <span>Computer Networking</span>
+                <span>70%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 70%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section" style="background: #f1f5f9">
+      <div class="container">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <i class="fab fa-java"></i>
+            <h3>Java Development</h3>
+            <p>
+              Building robust applications using Java with focus on performance
+              and scalability.
+            </p>
+          </div>
+          <div class="skill-card">
+            <i class="fab fa-html5"></i>
+            <h3>HTML & CSS</h3>
+            <p>
+              Creating responsive and visually appealing websites with modern
+              design principles.
+            </p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-laptop-code"></i>
+            <h3>Problem Solving</h3>
+            <p>
+              Analyzing complex problems and developing efficient algorithmic
+              solutions.
+            </p>
+          </div>
+          <div class="skill-card">
+            <i class="fab fa-github"></i>
+            <h3>GitHub</h3>
+            <p>
+              Version control and collaboration on projects using Git and GitHub
+              workflows.
+            </p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-code"></i>
+            <h3>C Programming</h3>
+            <p>
+              Developing efficient system-level applications and understanding
+              low-level operations.
+            </p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-network-wired"></i>
+            <h3>Computer Networking</h3>
+            <p>
+              Designing and understanding network architectures and protocols.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+          <div class="contact-info">
+            <h2>Let's Talk About Your Project</h2>
+            <p>
+              Feel free to reach out if you're looking for a developer, have a
+              question, or just want to connect.
+            </p>
+            <p><i class="fas fa-envelope"></i> email@example.com</p>
+            <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+            <p><i class="fas fa-map-marker-alt"></i> Your Location</p>
+          </div>
+          <div class="contact-form">
+            <form>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Your Name" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Your Email" />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Your Message"></textarea>
+              </div>
+              <button type="submit" class="btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="social-links">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2023 Rodrigue. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+        });
+      });
+    </script>
+  </body>
+</html>
